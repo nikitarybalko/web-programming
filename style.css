@@ -1,0 +1,83 @@
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    scroll-behavior: smooth;
+    color: #333;
+}
+
+:root {
+    --primary-color: #0d6efd;
+    --hero-overlay: rgba(0, 33, 71, 0.75);
+}
+
+main {
+    padding-top: 56px;
+}
+
+.hero-section {
+    min-height: 80vh;
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)), 
+                url('img/bg.webp') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.section-title {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+    font-weight: 700;
+    color: #2c3e50;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.custom-table th {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.custom-table td {
+    vertical-align: middle;
+    padding: 12px 15px;
+}
+
+.gallery-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.15)!important;
+}
+
+.gallery-card img {
+    object-fit: cover;
+    height: 300px;
+    transition: transform 0.5s ease;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 60vh;
+    }
+    
+    .display-3 {
+        font-size: 2.5rem;
+    }
+}
