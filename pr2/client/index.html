@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="uk" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Моніторинг Зарядної Станції Електромобілів</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="header-content">
+                    <h1>⚡ Зарядна станція EV-13</h1>
+                    <p>
+                        Останнє оновлення:
+                        <span id="lastUpdate" aria-live="polite">--:--:--</span>
+                    </p>
+                </div>
+                <button
+                    id="themeToggleBtn"
+                    class="btn btn-icon"
+                    aria-label="Перемикач теми"
+                >
+                    🌙 / ☀️
+                </button>
+            </header>
+
+            <main>
+                <section class="controls" aria-label="Панель керування">
+                    <button id="updateBtn" class="btn btn-primary">
+                        🔄 Оновити дані
+                    </button>
+                    <button id="autoUpdateBtn" class="btn btn-success">
+                        ▶️ Підключитися
+                    </button>
+                    <button id="exportBtn" class="btn btn-secondary">
+                        💾 Експорт CSV
+                    </button>
+                    <div class="status-badge" aria-live="polite">
+                        Статус автооновлення:
+                        <span id="autoStatus">Вимкнено</span>
+                    </div>
+                </section>
+
+                <section class="dashboard" aria-label="Параметри моніторингу">
+                    <div class="card card-modern">
+                        <h3>Потужність заряду</h3>
+                        <div class="value">
+                            <span id="param-power" class="big-number">0</span>
+                            <span class="unit">кВт</span>
+                        </div>
+                        <div id="status-power" class="status-indicator">
+                            ● Норма
+                        </div>
+                    </div>
+
+                    <div class="card card-modern">
+                        <h3>Напруга заряду</h3>
+                        <div class="value">
+                            <span id="param-voltage" class="big-number">0</span>
+                            <span class="unit">В</span>
+                        </div>
+                        <div id="status-voltage" class="status-indicator">
+                            ● Норма
+                        </div>
+                    </div>
+
+                    <div class="card card-modern">
+                        <h3>Струм заряду</h3>
+                        <div class="value">
+                            <span id="param-current" class="big-number">0</span>
+                            <span class="unit">А</span>
+                        </div>
+                        <div id="status-current" class="status-indicator">
+                            ● Норма
+                        </div>
+                    </div>
+
+                    <div class="card card-modern">
+                        <h3>Рівень заряду АКБ</h3>
+                        <div class="value">
+                            <span id="param-battery" class="big-number">0</span>
+                            <span class="unit">%</span>
+                        </div>
+                        <div id="status-battery" class="status-indicator">
+                            ● Норма
+                        </div>
+                    </div>
+
+                    <div class="card card-modern card-small">
+                        <h4>Стан роз'єму</h4>
+                        <div
+                            id="connector-status"
+                            class="value-text status-normal"
+                        >
+                            Підключено
+                        </div>
+                    </div>
+                    <div class="card card-modern card-small">
+                        <h4>Зарядок за день</h4>
+                        <div class="value">
+                            <span id="daily-charges">12</span>
+                        </div>
+                    </div>
+                    <div class="card card-modern card-small">
+                        <h4>Спожита енергія</h4>
+                        <div class="value">
+                            <span id="total-energy">0</span>
+                            <span class="unit">кВт·год</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="chart-section" aria-label="Графік потужності">
+                    <div class="card card-modern">
+                        <h3>Динаміка потужності заряду</h3>
+                        <div class="chart-container">
+                            <canvas id="powerChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+                <p>
+                    &copy; 2026 Моніторинг Енергетичних Об'єктів. Практична
+                    робота.
+                </p>
+            </footer>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
