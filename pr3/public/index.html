@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Комерційний облік точок</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-wrapper">
+      <aside class="sidebar">
+        <h2>Нова точка обліку</h2>
+        <form id="pointForm">
+          <div class="form-group">
+            <label for="number">Номер точки</label>
+            <input
+              type="text"
+              id="number"
+              name="number"
+              required
+              placeholder="Напр. 1024-А"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="objectName">Назва об'єкта</label>
+            <input
+              type="text"
+              id="objectName"
+              name="objectName"
+              required
+              placeholder="Напр. ТЦ 'Глобус'"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="meterType">Тип лічильника</label>
+            <select id="meterType" name="meterType" required>
+              <option value="" disabled selected>Оберіть тип</option>
+              <option value="NIK">НІК 2102</option>
+              <option value="MTX">MTX 1</option>
+              <option value="Energomera">Енергоміра CE102</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="verificationDate">Дата наступної повірки</label>
+            <input
+              type="date"
+              id="verificationDate"
+              name="verificationDate"
+              required
+            />
+          </div>
+
+          <div class="form-group checkbox-group">
+            <input type="checkbox" id="isControlled" name="isControlled" />
+            <label for="isControlled">Особливий контроль</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Зберегти точку</button>
+        </form>
+        <div id="toast" class="toast"></div>
+      </aside>
+
+      <main class="content">
+        <header class="content-header">
+          <h1>Реєстр точок обліку</h1>
+          <div class="filters">
+            <label class="toggle-switch">
+              <input type="checkbox" id="filterOverdue" />
+              <span class="slider"></span>
+              <span class="label-text">Тільки прострочені повірки</span>
+            </label>
+          </div>
+        </header>
+
+        <div id="pointsGrid" class="points-grid"></div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

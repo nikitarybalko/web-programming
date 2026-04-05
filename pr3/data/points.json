@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1775414530681",
+    "number": "Т-001",
+    "objectName": "Магазин",
+    "meterType": "NIK",
+    "verificationDate": "2025-08-06",
+    "isControlled": true,
+    "createdAt": "2026-04-05T18:42:10.681Z"
+  },
+  {
+    "id": "1775414615898",
+    "number": "Т-002",
+    "objectName": "Офіс",
+    "meterType": "MTX",
+    "verificationDate": "2027-02-18",
+    "isControlled": false,
+    "createdAt": "2026-04-05T18:43:35.898Z"
+  }
+]

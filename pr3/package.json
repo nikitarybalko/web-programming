@@ -1,0 +1,16 @@
+{
+  "name": "commercial-accounting",
+  "version": "1.0.0",
+  "description": "Комерційний облік: Точки обліку",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
