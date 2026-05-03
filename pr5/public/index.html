@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Моніторинг Геотермальної Електростанції</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        background-color: #f4f6f9;
+      }
+      .metric-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        height: 100%;
+      }
+      .metric-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #0d6efd;
+      }
+      .status-badge {
+        font-size: 1rem;
+        padding: 5px 15px;
+      }
+      .chart-container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid py-4 px-5">
+      <header class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 fw-bold text-dark">Геотермальна Електростанція</h1>
+        <div>
+          Статус з'єднання:
+          <span id="wsStatus" class="badge bg-secondary status-badge"
+            >Підключення...</span
+          >
+        </div>
+      </header>
+
+      <div class="row g-3 mb-4">
+        <div class="col-md-2">
+          <div class="metric-card">
+            <div class="text-muted small">Температура флюїду</div>
+            <div class="metric-value" id="valTemp">--</div>
+            <div class="text-muted">°C</div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="metric-card">
+            <div class="text-muted small">Тиск пари</div>
+            <div class="metric-value" id="valPressure">--</div>
+            <div class="text-muted">бар</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="metric-card" style="border-bottom: 4px solid #198754">
+            <div class="text-muted small">Електрична потужність</div>
+            <div
+              class="metric-value text-success"
+              id="valPower"
+              style="font-size: 2.5rem"
+            >
+              --
+            </div>
+            <div class="text-muted">МВт</div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="metric-card">
+            <div class="text-muted small">Витрата теплоносія</div>
+            <div class="metric-value" id="valFlow">--</div>
+            <div class="text-muted">кг/с</div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="metric-card">
+            <div class="text-muted small">Ефективність циклу</div>
+            <div class="metric-value" id="valEff">--</div>
+            <div class="text-muted">%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <div class="col-md-8">
+          <div class="chart-container">
+            <h5 class="mb-3">Графік потужності (МВт)</h5>
+            <canvas id="powerChart" height="100"></canvas>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="chart-container">
+            <h5 class="mb-3">T-S Діаграма (Температура/Ентропія)</h5>
+            <canvas id="tsChart" height="215"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="chart-container">
+            <h5 class="mb-3">Історія параметрів</h5>
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead class="table-light">
+                  <tr>
+                    <th>Час</th>
+                    <th>Температура (°C)</th>
+                    <th>Тиск (бар)</th>
+                    <th>Потужність (МВт)</th>
+                    <th>Витрата (кг/с)</th>
+                    <th>Ефективність (%)</th>
+                  </tr>
+                </thead>
+                <tbody id="historyTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
