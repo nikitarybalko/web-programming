@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VPP Dashboard (Варіант 13)</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .card {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+      }
+      input,
+      select,
+      button {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      #dashboard {
+        display: none;
+      }
+      .action-btn {
+        background-color: #28a745;
+        margin-bottom: 5px;
+      }
+      #output {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border: 1px solid #ddd;
+        white-space: pre-wrap;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Віртуальна електростанція (VPP)</h1>
+
+    <div id="auth-section">
+      <div class="card">
+        <h3>Реєстрація</h3>
+        <form id="register-form">
+          <input type="text" id="reg-name" placeholder="Ім'я" required />
+          <input type="email" id="reg-email" placeholder="Email" required />
+          <input
+            type="password"
+            id="reg-password"
+            placeholder="Пароль (мін. 8 символів)"
+            required
+          />
+          <select id="reg-role">
+            <option value="solar_engineer">Інженер сонячної генерації</option>
+            <option value="wind_engineer">Інженер вітрогенерації</option>
+            <option value="coordinator">Координатор мережі</option>
+          </select>
+          <button type="submit">Зареєструватися</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3>Вхід</h3>
+        <form id="login-form">
+          <input type="email" id="log-email" placeholder="Email" required />
+          <input
+            type="password"
+            id="log-password"
+            placeholder="Пароль"
+            required
+          />
+          <button type="submit">Увійти</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="dashboard" class="card">
+      <h2>
+        Дашборд
+        <span id="user-info" style="font-size: 14px; color: gray"></span>
+      </h2>
+      <p>
+        Натискайте кнопки нижче, щоб перевірити, чи має ваша роль доступ до
+        відповідних API.
+      </p>
+
+      <button class="action-btn" id="btn-solar">
+        Отримати дані сонячної генерації
+      </button>
+      <button class="action-btn" id="btn-wind">
+        Отримати дані вітрогенерації
+      </button>
+      <button
+        class="action-btn"
+        id="btn-adjust"
+        style="background-color: #dc3545"
+      >
+        Скоригувати баланс (+10 МВт)
+      </button>
+
+      <button
+        id="btn-logout"
+        style="background-color: #6c757d; margin-top: 20px"
+      >
+        Вийти
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>Консоль відповідей сервера:</h3>
+      <div id="output">Тут будуть результати запитів...</div>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
